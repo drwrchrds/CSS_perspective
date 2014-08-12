@@ -1,0 +1,187 @@
+<html>
+  <head>
+    <title>Perspective Testing</title>
+    
+    <style>
+    
+      div {
+        box-sizing: border-box;
+      }
+      
+      .container {
+        font-family: Arial, sans-serif;
+        margin: 30px auto;
+        width: 1150px;
+      }
+      
+      .container:after {
+        content: " ";
+        clear: both;
+        display: block;
+      }
+      
+      .container > div {
+        float: left;
+      }
+      
+      .description {
+        width: 600px;
+        height: 250px;
+        font-size: 2em;
+        display: table;
+        text-align: right;
+        padding: 20px;
+        position: relative;
+      }
+      
+      .description p {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      
+      .rotate-group .aside {
+        font-size: .4em;
+        color: #cecece;
+        position: absolute;
+        bottom: 10px;
+        width: 300px;
+        right: 530px;
+        text-align: right;
+        color: white;
+        transition: 1s ease;
+      }
+      
+      .rotate-group:hover .aside {
+        color: #cecece;
+      }
+      
+      .rotate-group {
+        width: 510px;
+        height: 250px;
+        border: 1px solid black;
+        box-shadow: 3px 3px 5px 2px #ccc;
+        position:relative;
+        padding: 10px;
+        font-size: 2em;
+        color: white;
+        transition: 1.5s ease;
+      }
+      
+      .rotate-group:hover {
+        background: #cecece;
+      }
+      
+      .rotate-group > div {
+        position: absolute;
+        top: 25px;
+        width: 130px;
+        height: 200px;
+        border: 2px solid blue;
+        padding: 10px;
+        color: black;
+        font-size: .5em;
+      }
+      
+      .rotate-x {
+        left: 30px;
+      }
+      
+      .rotate-y {
+        left: 190px;
+      }
+      
+      .rotate-z {
+        left: 350px;
+      }
+      
+      .rotate-x, .rotate-y, .rotate-z {
+        transition: ease 1.5s;
+      }
+      
+      .rotate-group:hover .rotate-x {
+        transform: rotateX(180deg);
+      }
+      
+      .rotate-group:hover .rotate-y {
+        transform: rotateY(180deg);
+      }
+      
+      .rotate-group:hover .rotate-z {
+        transform: rotateZ(180deg);
+      }
+      
+      .some-perspective {
+        perspective: 300px;
+      }
+      
+      .high-perspective {
+        perspective: 1700px;
+      }
+      
+      .low-perspective {
+        perspective: 30px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    
+    <div class='container'>
+      <div class='description'>
+        <p>This parent element has <b style="display:block;font-size:1.3em;margin:3px 0;">no perspective</b> The elements rotate, 
+          but appear flat, and uninspired.</p>
+      </div>
+      <div class='rotate-group no-perspective'>
+        I have no perspective
+        <div class='rotate-x'>rotateX</div>
+        <div class='rotate-y'>rotateY</div>
+        <div class='rotate-z'>rotateZ</div>
+      </div>
+    </div>
+    
+    <div class='container'>
+      <div class='description'>
+        <p>Give the parent some perspective. Shouldn't all parents have perspective?</p></div>
+      <div class='rotate-group some-perspective'>
+        I have perspective: 300px;
+        <div class='rotate-x'>rotateX</div>
+        <div class='rotate-y'>rotateY</div>
+        <div class='rotate-z'>rotateZ</div>
+      </div>
+    </div>
+    
+    <div class='container'>
+      <div class='description'>
+        <p>The higher the perspective, the more <b>subtle</b> the effect.</p>
+        
+      </div>
+      <div class='rotate-group high-perspective'>
+        I have perspective: 1700px;
+        <div class='rotate-x'>rotateX</div>
+        <div class='rotate-y'>rotateY</div>
+        <div class='rotate-z'>rotateZ</div>
+        
+        <span class='aside'>
+          If you were far away from a rotating body, 
+          it might not appear to be rotating.</span>
+      </div>
+    </div>
+    
+    <div class='container'>
+      <div class='description'>
+        <p>A lower perspective is more <b>drastic</b>.</p>
+      </div>
+      <div class='rotate-group low-perspective'>
+        I have perspective: 30px;
+        <div class='rotate-x'>rotateX</div>
+        <div class='rotate-y'>rotateY</div>
+        <div class='rotate-z'>rotateZ</div>
+
+        <span class='aside'>
+          Now try with your face 30px from the screen - 
+          does this feel like your perspective?</span>
+      </div>
+    </div>
+    
+  </body>
+</html>
